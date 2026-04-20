@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArenaFlow AI - Smart Event Copilot</title>
+    <!-- Use a modern, highly readable font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body id="app-body">
+    <div class="container">
+        <header>
+            <h1>ArenaFlow AI</h1>
+            <p>Your Smart Event Copilot</p>
+        </header>
+
+        <main>
+            <section class="form-section">
+                <form id="recommendation-form">
+                    
+                    <!-- Accessibility Note: Explicit, clear labels for screen readers and visibility -->
+                    <div class="form-group">
+                        <label for="location">Current Location:</label>
+                        <select id="location" required>
+                            <option value="" disabled selected>Select where you are...</option>
+                            <option value="Main Gate">Main Gate</option>
+                            <option value="South Gate">South Gate</option>
+                            <option value="Concourse 1">Concourse 1</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="intent">What do you want to do?</label>
+                        <select id="intent" required>
+                            <option value="" disabled selected>Select an action...</option>
+                            <option value="food">Get Food</option>
+                            <option value="restroom">Use Restroom</option>
+                            <option value="exit">Leave Venue</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group checkbox-group">
+                        <input type="checkbox" id="accessibility-mode">
+                        <label for="accessibility-mode">Enable Accessibility Mode (Safer paths, simpler instructions)</label>
+                    </div>
+
+                    <button type="submit" id="submit-btn">Get Recommendation</button>
+                </form>
+            </section>
+
+            <section id="results-section" class="hidden">
+                <div class="card result-card">
+                    <h2>Route Recommended</h2>
+                    <p id="result-recommendation" aria-live="polite">Loading...</p>
+                    
+                    <div class="explanation-box" aria-live="polite">
+                        <h3>Reasoning:</h3>
+                        <p id="result-explanation"></p>
+                    </div>
+
+                    <div id="safety-note-container" class="safety-box hidden" aria-live="assertive">
+                        <strong>Safety Note:</strong> <span id="result-safety"></span>
+                    </div>
+
+                    <div class="footer-meta">
+                        <small>Powered by <span id="result-source">AI</span></small>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Error Display -->
+            <div id="error-message" class="hidden error-box" aria-live="assertive"></div>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
